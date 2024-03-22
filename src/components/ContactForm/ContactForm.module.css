@@ -1,0 +1,65 @@
+.phoneBook {
+  background-color: rgb(238, 236, 236);
+  border-radius: 4px;
+  border: 1px solid rgba(15, 15, 15, 0.3);
+  padding: 20px;
+  /*display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;*/
+  font-family: 'Comic Sans MS';
+  font-size: 16px;
+}
+
+.formTitle {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.formSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  background-color: rgb(209, 209, 209);
+  border: 1px solid rgba(15, 15, 15, 0.3);
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.button {
+  padding: 5px;
+  border: 1px solid rgba(15, 15, 15, 0.3);
+  border-radius: 10px;
+  text-align: center;
+  background-color: rgb(238, 236, 236);
+  font-family: 'Comic Sans MS';
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgb(209, 209, 209);
+}
+
+.buttonArea {
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.formLabel {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.formInput {
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 4px;
+  background-color: rgb(238, 236, 236);
+  padding: 5px;
+}
