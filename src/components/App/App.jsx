@@ -22,19 +22,31 @@ import { Filter } from '../Filter/Filter';
 import { nanoid } from 'nanoid';
 
 export class App extends Component {
-  
-
   state = {
     contacts: [],
     filter: '',
   };
+
+  componentDidMount() {
+    const savedContacts = localStorage.getItem('contacts');
+    const parsedContacts = JSON.parse(savedContacts);
+    if (savedContacts) {
+      this.setState({ contacts: parsedContacts });
+    }
+  }
+
+  componentDidUpdate(prevState) {
+    const { contacts } = this.state;
+    if (prevState.contacts !== contacts) {
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+    }
+  }
 
   handleNameChange = evt => {
     const { value } = evt.target;
 
     let uniqueId;
     uniqueId = nanoid();
-
 
     this.setState({
       id: uniqueId,
@@ -54,7 +66,6 @@ export class App extends Component {
     evt.target.style.boxShadow = 'inset 0 0 10px 5px rgba(0, 0, 0, 0.3)';
     setTimeout(() => {
       evt.target.style.boxShadow = 'none';
-      
     }, 200);
     const { contacts } = this.state;
     const { id, name, number } = this.state;
@@ -62,7 +73,7 @@ export class App extends Component {
     const isNameDuplicate = contacts.some(contact => contact.name === name);
     if (isNameDuplicate) {
       alert('This name already exists');
-      
+
       return;
     }
 
@@ -89,7 +100,7 @@ export class App extends Component {
   handleSubmit = evt => {
     evt.preventDefault();
     evt.target.reset();
-    
+
     this.setState({
       name: '',
       number: '',
@@ -110,35 +121,27 @@ export class App extends Component {
     );
 
     this.setState({ filteredArray: bestMatches });
-    
   };
 
   handleDelete = evt => {
     const { contacts } = this.state;
     const { name } = evt.target;
 
-    const myIndex = contacts.findIndex(
-      contact => contact.name === name
-    );
+    const myIndex = contacts.findIndex(contact => contact.name === name);
 
     console.log(myIndex);
 
-   
     contacts.splice(myIndex, 1);
-
 
     this.setState({ contacts: contacts });
     console.log(contacts);
-  }
-
-  
+  };
 
   render() {
     const { name, number } = this.state.contacts;
     const { filter } = this.state;
     const { contacts } = this.state;
     const { filteredArray } = this.state;
-    
 
     return (
       <div
